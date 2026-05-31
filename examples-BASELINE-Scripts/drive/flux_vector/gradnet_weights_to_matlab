@@ -1,0 +1,27 @@
+import os
+
+import torch
+from scipy.io import savemat
+
+# Get the exact folder where this script lives
+current_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(current_dir, "baldor_gradnet_inverse.pth")
+
+# Load your model checkpoint
+checkpoint = torch.load(model_path, weights_only=False)
+state = checkpoint["model_state"]
+
+# Extract weights and FORCE them to float64 (double precision) for MATLAB
+weights = {
+    "NN_A": state["A"].numpy().astype("float64"),
+    "NN_b": state["b"].numpy().astype("float64"),
+    "NN_b0": state["b0"].numpy().astype("float64"),
+    "NN_log_mu": state["log_mu"].numpy().astype("float64"),
+    "NN_log_beta": state["activation.log_beta"].numpy().astype("float64"),
+    "Psi_base": float(checkpoint["Psi_base"]),
+    "I_base": float(checkpoint["I_base"]),
+}
+
+# Save them to a MATLAB file
+savemat("gradnet_weights.mat", weights)
+print("Saved gradnet_weights.mat successfully in DOUBLE precision!")
