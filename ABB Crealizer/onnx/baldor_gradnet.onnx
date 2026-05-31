@@ -1,0 +1,506 @@
+
+pytorch	2.9.0+cpu:ñÏ
+½
+
+flux_input
+val_0divnode_div"DivJ?
+	namespace2: __main__.GradNetOnnxWrapper/div: aten.div.TensorJT
+pkg.torch.onnx.class_hierarchy2['__main__.GradNetOnnxWrapper', 'aten.div.Tensor']J–
+pkg.torch.onnx.fx_node|%div : [num_users=3] = call_function[target=torch.ops.aten.div.Tensor](args = (%psi_input, 1.3125665187835693), kwargs = {})J)
+pkg.torch.onnx.name_scopes['', 'div']J¸
+pkg.torch.onnx.stack_trace™File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 54, in forward
+    x = psi_input / self.psi_base
+Ã
+div
+permutematmulnode_matmul"MatMulJh
+	namespace[: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/matmul: aten.matmul.defaultJs
+pkg.torch.onnx.class_hierarchyQ['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.matmul.default']J
+pkg.torch.onnx.fx_nodes%matmul : [num_users=1] = call_function[target=torch.ops.aten.matmul.default](args = (%div, %permute), kwargs = {})J8
+pkg.torch.onnx.name_scopes['', 'ai_model', 'matmul']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+³
+matmul
+
+ai_model.baddnode_add"AddJa
+	namespaceT: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/add: aten.add.TensorJo
+pkg.torch.onnx.class_hierarchyM['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.add.Tensor']J
+pkg.torch.onnx.fx_nodet%add : [num_users=2] = call_function[target=torch.ops.aten.add.Tensor](args = (%matmul, %p_ai_model_b), kwargs = {})J5
+pkg.torch.onnx.name_scopes['', 'ai_model', 'add']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+É
+div
+wherematmul_1node_matmul_1"MatMulJj
+	namespace]: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/matmul_1: aten.matmul.defaultJs
+pkg.torch.onnx.class_hierarchyQ['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.matmul.default']J
+pkg.torch.onnx.fx_nodes%matmul_1 : [num_users=1] = call_function[target=torch.ops.aten.matmul.default](args = (%div, %where), kwargs = {})J:
+pkg.torch.onnx.name_scopes['', 'ai_model', 'matmul_1']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+Ã
+matmul_1
+ai_model.b0add_1
+node_add_1"AddJc
+	namespaceV: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/add_1: aten.add.TensorJo
+pkg.torch.onnx.class_hierarchyM['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.add.Tensor']J“
+pkg.torch.onnx.fx_nodey%add_1 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%matmul_1, %p_ai_model_b0), kwargs = {})J7
+pkg.torch.onnx.name_scopes['', 'ai_model', 'add_1']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+Ã
+add
+val_16pow_1
+node_pow_1"PowJš
+	namespaceŒ: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/ai_model.activation: __main__.AlgebraicSigmoid/pow_1: aten.pow.Tensor_ScalarJ“
+pkg.torch.onnx.class_hierarchyq['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', '__main__.AlgebraicSigmoid', 'aten.pow.Tensor_Scalar']Jˆ
+pkg.torch.onnx.fx_noden%pow_1 : [num_users=1] = call_function[target=torch.ops.aten.pow.Tensor_Scalar](args = (%add, 2), kwargs = {})JN
+pkg.torch.onnx.name_scopes0['', 'ai_model', 'ai_model.activation', 'pow_1']J
+pkg.torch.onnx.stack_traceîFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 16, in forward
+    return z / torch.sqrt(z**2 + beta)
+¶
+pow_1
+exp_1add_2
+node_add_2"AddJ“
+	namespace…: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/ai_model.activation: __main__.AlgebraicSigmoid/add_2: aten.add.TensorJŒ
+pkg.torch.onnx.class_hierarchyj['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', '__main__.AlgebraicSigmoid', 'aten.add.Tensor']Jˆ
+pkg.torch.onnx.fx_noden%add_2 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%pow_1, %exp_1), kwargs = {})JN
+pkg.torch.onnx.name_scopes0['', 'ai_model', 'ai_model.activation', 'add_2']J
+pkg.torch.onnx.stack_traceîFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 16, in forward
+    return z / torch.sqrt(z**2 + beta)
+ª
+add_2sqrt	node_sqrt"SqrtJ”
+	namespace†: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/ai_model.activation: __main__.AlgebraicSigmoid/sqrt: aten.sqrt.defaultJ
+pkg.torch.onnx.class_hierarchyl['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', '__main__.AlgebraicSigmoid', 'aten.sqrt.default']J‚
+pkg.torch.onnx.fx_nodeh%sqrt : [num_users=1] = call_function[target=torch.ops.aten.sqrt.default](args = (%add_2,), kwargs = {})JM
+pkg.torch.onnx.name_scopes/['', 'ai_model', 'ai_model.activation', 'sqrt']J
+pkg.torch.onnx.stack_traceîFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 16, in forward
+    return z / torch.sqrt(z**2 + beta)
+°
+add
+sqrtdiv_1
+node_div_1"DivJ“
+	namespace…: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/ai_model.activation: __main__.AlgebraicSigmoid/div_1: aten.div.TensorJŒ
+pkg.torch.onnx.class_hierarchyj['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', '__main__.AlgebraicSigmoid', 'aten.div.Tensor']J…
+pkg.torch.onnx.fx_nodek%div_1 : [num_users=1] = call_function[target=torch.ops.aten.div.Tensor](args = (%add, %sqrt), kwargs = {})JN
+pkg.torch.onnx.name_scopes0['', 'ai_model', 'ai_model.activation', 'div_1']J
+pkg.torch.onnx.stack_traceîFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 16, in forward
+    return z / torch.sqrt(z**2 + beta)
+Ù
+div_1
+
+ai_model.Amatmul_2node_matmul_2"MatMulJj
+	namespace]: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/matmul_2: aten.matmul.defaultJs
+pkg.torch.onnx.class_hierarchyQ['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.matmul.default']J–
+pkg.torch.onnx.fx_node|%matmul_2 : [num_users=1] = call_function[target=torch.ops.aten.matmul.default](args = (%div_1, %p_ai_model_a), kwargs = {})J:
+pkg.torch.onnx.name_scopes['', 'ai_model', 'matmul_2']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+µ
+add_1
+matmul_2add_3
+node_add_3"AddJc
+	namespaceV: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/add_3: aten.add.TensorJo
+pkg.torch.onnx.class_hierarchyM['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.add.Tensor']J‹
+pkg.torch.onnx.fx_nodeq%add_3 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%add_1, %matmul_2), kwargs = {})J7
+pkg.torch.onnx.name_scopes['', 'ai_model', 'add_3']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+Õ
+div
+
+ai_model.Cmatmul_3node_matmul_3"MatMulJj
+	namespace]: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/matmul_3: aten.matmul.defaultJs
+pkg.torch.onnx.class_hierarchyQ['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.matmul.default']J”
+pkg.torch.onnx.fx_nodez%matmul_3 : [num_users=2] = call_function[target=torch.ops.aten.matmul.default](args = (%div, %b_ai_model_c), kwargs = {})J:
+pkg.torch.onnx.name_scopes['', 'ai_model', 'matmul_3']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+Ù
+matmul_3
+permutematmul_4node_matmul_4"MatMulJj
+	namespace]: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/matmul_4: aten.matmul.defaultJs
+pkg.torch.onnx.class_hierarchyQ['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.matmul.default']J–
+pkg.torch.onnx.fx_node|%matmul_4 : [num_users=1] = call_function[target=torch.ops.aten.matmul.default](args = (%matmul_3, %permute_2), kwargs = {})J:
+pkg.torch.onnx.name_scopes['', 'ai_model', 'matmul_4']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+Á
+matmul_4
+
+ai_model.badd_4
+node_add_4"AddJc
+	namespaceV: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/add_4: aten.add.TensorJo
+pkg.torch.onnx.class_hierarchyM['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.add.Tensor']J’
+pkg.torch.onnx.fx_nodex%add_4 : [num_users=2] = call_function[target=torch.ops.aten.add.Tensor](args = (%matmul_4, %p_ai_model_b), kwargs = {})J7
+pkg.torch.onnx.name_scopes['', 'ai_model', 'add_4']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+Õ
+matmul_3
+wherematmul_5node_matmul_5"MatMulJj
+	namespace]: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/matmul_5: aten.matmul.defaultJs
+pkg.torch.onnx.class_hierarchyQ['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.matmul.default']J”
+pkg.torch.onnx.fx_nodez%matmul_5 : [num_users=1] = call_function[target=torch.ops.aten.matmul.default](args = (%matmul_3, %where_1), kwargs = {})J:
+pkg.torch.onnx.name_scopes['', 'ai_model', 'matmul_5']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+Ã
+matmul_5
+ai_model.b0add_5
+node_add_5"AddJc
+	namespaceV: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/add_5: aten.add.TensorJo
+pkg.torch.onnx.class_hierarchyM['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.add.Tensor']J“
+pkg.torch.onnx.fx_nodey%add_5 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%matmul_5, %p_ai_model_b0), kwargs = {})J7
+pkg.torch.onnx.name_scopes['', 'ai_model', 'add_5']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+Ç
+add_4
+val_16pow_2
+node_pow_2"PowJš
+	namespaceŒ: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/ai_model.activation: __main__.AlgebraicSigmoid/pow_2: aten.pow.Tensor_ScalarJ“
+pkg.torch.onnx.class_hierarchyq['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', '__main__.AlgebraicSigmoid', 'aten.pow.Tensor_Scalar']JŠ
+pkg.torch.onnx.fx_nodep%pow_2 : [num_users=1] = call_function[target=torch.ops.aten.pow.Tensor_Scalar](args = (%add_4, 2), kwargs = {})JN
+pkg.torch.onnx.name_scopes0['', 'ai_model', 'ai_model.activation', 'pow_2']J
+pkg.torch.onnx.stack_traceîFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 16, in forward
+    return z / torch.sqrt(z**2 + beta)
+¶
+pow_2
+exp_1add_6
+node_add_6"AddJ“
+	namespace…: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/ai_model.activation: __main__.AlgebraicSigmoid/add_6: aten.add.TensorJŒ
+pkg.torch.onnx.class_hierarchyj['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', '__main__.AlgebraicSigmoid', 'aten.add.Tensor']Jˆ
+pkg.torch.onnx.fx_noden%add_6 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%pow_2, %exp_3), kwargs = {})JN
+pkg.torch.onnx.name_scopes0['', 'ai_model', 'ai_model.activation', 'add_6']J
+pkg.torch.onnx.stack_traceîFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 16, in forward
+    return z / torch.sqrt(z**2 + beta)
+´
+add_6sqrt_1node_sqrt_1"SqrtJ–
+	namespaceˆ: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/ai_model.activation: __main__.AlgebraicSigmoid/sqrt_1: aten.sqrt.defaultJ
+pkg.torch.onnx.class_hierarchyl['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', '__main__.AlgebraicSigmoid', 'aten.sqrt.default']J„
+pkg.torch.onnx.fx_nodej%sqrt_1 : [num_users=1] = call_function[target=torch.ops.aten.sqrt.default](args = (%add_6,), kwargs = {})JO
+pkg.torch.onnx.name_scopes1['', 'ai_model', 'ai_model.activation', 'sqrt_1']J
+pkg.torch.onnx.stack_traceîFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 16, in forward
+    return z / torch.sqrt(z**2 + beta)
+¸
+add_4
+sqrt_1div_2
+node_div_2"DivJ“
+	namespace…: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/ai_model.activation: __main__.AlgebraicSigmoid/div_2: aten.div.TensorJŒ
+pkg.torch.onnx.class_hierarchyj['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', '__main__.AlgebraicSigmoid', 'aten.div.Tensor']J‰
+pkg.torch.onnx.fx_nodeo%div_2 : [num_users=1] = call_function[target=torch.ops.aten.div.Tensor](args = (%add_4, %sqrt_1), kwargs = {})JN
+pkg.torch.onnx.name_scopes0['', 'ai_model', 'ai_model.activation', 'div_2']J
+pkg.torch.onnx.stack_traceîFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 16, in forward
+    return z / torch.sqrt(z**2 + beta)
+Ù
+div_2
+
+ai_model.Amatmul_6node_matmul_6"MatMulJj
+	namespace]: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/matmul_6: aten.matmul.defaultJs
+pkg.torch.onnx.class_hierarchyQ['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.matmul.default']J–
+pkg.torch.onnx.fx_node|%matmul_6 : [num_users=1] = call_function[target=torch.ops.aten.matmul.default](args = (%div_2, %p_ai_model_a), kwargs = {})J:
+pkg.torch.onnx.name_scopes['', 'ai_model', 'matmul_6']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+µ
+add_5
+matmul_6add_7
+node_add_7"AddJc
+	namespaceV: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/add_7: aten.add.TensorJo
+pkg.torch.onnx.class_hierarchyM['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.add.Tensor']J‹
+pkg.torch.onnx.fx_nodeq%add_7 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%add_5, %matmul_6), kwargs = {})J7
+pkg.torch.onnx.name_scopes['', 'ai_model', 'add_7']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+Ù
+add_7
+
+ai_model.Cmatmul_7node_matmul_7"MatMulJj
+	namespace]: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/matmul_7: aten.matmul.defaultJs
+pkg.torch.onnx.class_hierarchyQ['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.matmul.default']J–
+pkg.torch.onnx.fx_node|%matmul_7 : [num_users=1] = call_function[target=torch.ops.aten.matmul.default](args = (%add_7, %b_ai_model_c), kwargs = {})J:
+pkg.torch.onnx.name_scopes['', 'ai_model', 'matmul_7']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+µ
+add_3
+matmul_7add_8
+node_add_8"AddJc
+	namespaceV: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/add_8: aten.add.TensorJo
+pkg.torch.onnx.class_hierarchyM['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.add.Tensor']J‹
+pkg.torch.onnx.fx_nodeq%add_8 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%add_3, %matmul_7), kwargs = {})J7
+pkg.torch.onnx.name_scopes['', 'ai_model', 'add_8']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+£
+add_8
+val_28mulnode_mul"MulJa
+	namespaceT: __main__.GradNetOnnxWrapper/ai_model: __main__.GradNetFluxMap/mul: aten.mul.TensorJo
+pkg.torch.onnx.class_hierarchyM['__main__.GradNetOnnxWrapper', '__main__.GradNetFluxMap', 'aten.mul.Tensor']Jƒ
+pkg.torch.onnx.fx_nodei%mul : [num_users=1] = call_function[target=torch.ops.aten.mul.Tensor](args = (%add_8, 0.5), kwargs = {})J5
+pkg.torch.onnx.name_scopes['', 'ai_model', 'mul']Jì
+pkg.torch.onnx.stack_traceÍFile "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 56, in forward
+    out = self.ai_model(x)
+  File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 34, in forward
+    return 0.5 * (self._g(i_s) + self._g(i_s @ self.C) @ self.C)
+±
+mul
+val_29current_output
+node_mul_1"MulJA
+	namespace4: __main__.GradNetOnnxWrapper/mul_1: aten.mul.TensorJT
+pkg.torch.onnx.class_hierarchy2['__main__.GradNetOnnxWrapper', 'aten.mul.Tensor']J„
+pkg.torch.onnx.fx_nodej%mul_1 : [num_users=1] = call_function[target=torch.ops.aten.mul.Tensor](args = (%mul, 26.0), kwargs = {})J+
+pkg.torch.onnx.name_scopes['', 'mul_1']J³
+pkg.torch.onnx.stack_trace”File "d:\Repositories\Aalto\abb-crealizer\example-application\src\c++\onnx\baldor_gradnet_onnx.py", line 58, in forward
+    return out * self.i_base
+main_graph*tB
+ai_model.AJ`Å>½Z½¿2½&½¨Uİ6Ù==€Gâ´S¨¿sÒ¾;ƒ¿`óy> B5=S7DÌ>½Ö¢2*ëƒ¾²™¿Ò@Æ>^¶i>LIø¾r.¾hÃ<Bª%²ï ‘=\‘³*BB
+ai_model.bJ0(fÌ¾ÜòF¿+	,?ø?‰cS½wŞ¾Ñ*(¿ïŒ›?Yh¾«2¾F±½y–O¾*Bai_model.b0J4!Ê=    *$B
+ai_model.CJ  €?          €¿*qBpermuteJ`Å>½½&½Ù==S¨¿;ƒ¿ B5=DÌ>½*ëƒ¾Ò@Æ>LIø¾hÃ<ï ‘=Z½¿2¨Uİ6€Gâ´sÒ¾`óy>S7Ö¢2²™¿^¶i>r.¾Bª%²\‘³*BwhereJğu<        -ğ>;*Bexp_1JN–•=*Bval_0J.¨?*Bval_16J   @*Bval_28J   ?*Bval_29J  ĞAZÊ
+
+flux_input
+
+
+"=
+/pkg.torch.export.graph_signature.InputSpec.kind
+USER_INPUT"=
+5pkg.torch.export.graph_signature.InputSpec.persistentNone".
+!pkg.torch.onnx.original_node_name	psi_inputb
+current_output
+
+
+"?
+0pkg.torch.export.graph_signature.OutputSpec.kindUSER_OUTPUT"*
+!pkg.torch.onnx.original_node_namemul_1jÌ
+
+ai_model.A
+
+
+"<
+/pkg.torch.export.graph_signature.InputSpec.kind	PARAMETER"=
+5pkg.torch.export.graph_signature.InputSpec.persistentNone"1
+!pkg.torch.onnx.original_node_namep_ai_model_ajÈ
+
+ai_model.b
+
+
+"<
+/pkg.torch.export.graph_signature.InputSpec.kind	PARAMETER"=
+5pkg.torch.export.graph_signature.InputSpec.persistentNone"1
+!pkg.torch.onnx.original_node_namep_ai_model_bjÊ
+ai_model.b0
+
+
+"<
+/pkg.torch.export.graph_signature.InputSpec.kind	PARAMETER"=
+5pkg.torch.export.graph_signature.InputSpec.persistentNone"2
+!pkg.torch.onnx.original_node_namep_ai_model_b0jÉ
+
+ai_model.C
+
+
+"9
+/pkg.torch.export.graph_signature.InputSpec.kindBUFFER"=
+5pkg.torch.export.graph_signature.InputSpec.persistentTrue"1
+!pkg.torch.onnx.original_node_nameb_ai_model_cjQ
+permute
+
+
+"6
+$pkg.onnxscript.optimizer.folded_from['ai_model.A']j¨
+where
+
+
+"
+$pkg.onnxscript.optimizer.folded_fromå['ai_model.log_mu', 'arange', 'arange_1', 'eq', 'exp', 'permute_1', 'scalar_tensor_default', 'unsqueeze', 'unsqueeze_1', 'val_1', 'val_10', 'val_11', 'val_2', 'val_3', 'val_4', 'val_5', 'val_6', 'val_7', 'val_8', 'val_9', 'view']j]
+exp_1
+
+
+"H
+$pkg.onnxscript.optimizer.folded_from ['ai_model.activation.log_beta']j
+val_0
+ j
+val_16
+ j
+val_28
+ j
+val_29
+ j
+div
+
+
+j
+matmul
+
+
+j
+add
+
+
+j
+matmul_1
+
+
+j
+add_1
+
+
+j
+pow_1
+
+
+j
+add_2
+
+
+j
+sqrt
+
+
+j
+div_1
+
+
+j
+matmul_2
+
+
+j
+add_3
+
+
+j
+matmul_3
+
+
+j
+matmul_4
+
+
+j
+add_4
+
+
+j
+matmul_5
+
+
+j
+add_5
+
+
+j
+pow_2
+
+
+j
+add_6
+
+
+j
+sqrt_1
+
+
+j
+div_2
+
+
+j
+matmul_6
+
+
+j
+add_7
+
+
+j
+matmul_7
+
+
+j
+add_8
+
+
+j
+mul
+
+
+‚¸
+0pkg.torch.export.ExportedProgram.graph_signatureƒ
+# inputs
+p_ai_model_a: PARAMETER target='ai_model.A'
+p_ai_model_b: PARAMETER target='ai_model.b'
+p_ai_model_b0: PARAMETER target='ai_model.b0'
+p_ai_model_log_mu: PARAMETER target='ai_model.log_mu'
+p_ai_model_activation_log_beta: PARAMETER target='ai_model.activation.log_beta'
+b_ai_model_c: BUFFER target='ai_model.C' persistent=True
+psi_input: USER_INPUT
+
+# outputs
+mul_1: USER_OUTPUT
+‚8
+2pkg.torch.export.ExportedProgram.range_constraints{}B
+ 
